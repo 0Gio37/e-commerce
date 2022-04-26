@@ -1,0 +1,8 @@
+package fr.cda.ecommerce.exeption;
+
+public class ResourceNotFoundException extends RuntimeException{
+
+    public ResourceNotFoundException(String s){
+        super(s);
+    }
+}
