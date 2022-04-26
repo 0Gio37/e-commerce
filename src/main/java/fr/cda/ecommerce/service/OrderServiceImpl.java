@@ -4,12 +4,17 @@ import fr.cda.ecommerce.exeption.StockException;
 import fr.cda.ecommerce.model.Order;
 import fr.cda.ecommerce.model.OrderProduct;
 import fr.cda.ecommerce.model.Product;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service("orders")
 public class OrderServiceImpl implements OrderService {
     private final List<Order> allOrder = new ArrayList<>();
+
+    @Autowired
     private ProductService productService;
 
     public OrderServiceImpl(){

@@ -3,10 +3,12 @@ package fr.cda.ecommerce.service;
 import fr.cda.ecommerce.exeption.ResourceNotFoundException;
 import fr.cda.ecommerce.model.Client;
 import fr.cda.ecommerce.model.Product;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service("clients")
 public class ClientServiceImpl implements ClientService{
     private final List<Client> allClient = new ArrayList<>();
 
