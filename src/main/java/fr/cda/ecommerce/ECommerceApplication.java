@@ -8,6 +8,9 @@ import fr.cda.ecommerce.service.ClientService;
 import fr.cda.ecommerce.service.OrderService;
 import fr.cda.ecommerce.service.ProductService;
 import fr.cda.ecommerce.model.Product;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
@@ -16,8 +19,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-//@SpringBootApplication
+
 @ComponentScan("fr.*")
+@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
 public class ECommerceApplication {
 //TP2 - lancement via fichier xml
     /*public static void main(String[] args) {
@@ -87,13 +91,16 @@ public class ECommerceApplication {
 
     //Tp3 - lancement via annotations
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ECommerceApplication.class);
 
+        SpringApplication.run(ECommerceApplication.class, args);
+/*
+
+
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ECommerceApplication.class);
         // Récupération des beans services
         ProductService productService = context.getBean("products", ProductService.class);
         ClientService clientService = context.getBean("clients", ClientService.class);
         OrderService orderService = context.getBean("orders", OrderService.class);
-
 
         // Création des instances Product
         Product product1 = new Product(1l, "Produit 1", "desc du prod 1", 12d, "url1", 10);
@@ -115,9 +122,10 @@ public class ECommerceApplication {
         } catch (StockException e) {
             e.printStackTrace();
         }
+*/
+
+
+
 
     }
-
-
-
 }
