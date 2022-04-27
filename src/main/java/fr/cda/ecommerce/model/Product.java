@@ -2,10 +2,10 @@ package fr.cda.ecommerce.model;
 
 public class Product {
 
-    private Long id;
+    private int id;
     private String name;
     private String description;
-    private Double price;
+    private Integer price;
     private String picture;
     private Integer quantity;
 
@@ -13,7 +13,7 @@ public class Product {
         super();
     }
 
-    public Product(Long id, String name, String description, Double price, String picture, Integer quantity) {
+    public Product(int id, String name, String description, Integer price, String picture, Integer quantity) {
         super();
         this.id = id;
         this.name = name;
@@ -23,7 +23,7 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
@@ -35,7 +35,7 @@ public class Product {
         return description;
     }
 
-    public Double getPrice() {
+    public Integer getPrice() {
         return price;
     }
 

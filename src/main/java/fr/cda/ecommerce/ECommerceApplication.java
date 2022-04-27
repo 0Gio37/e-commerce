@@ -8,11 +8,13 @@ import fr.cda.ecommerce.service.ClientService;
 import fr.cda.ecommerce.service.OrderService;
 import fr.cda.ecommerce.service.ProductService;
 import fr.cda.ecommerce.model.Product;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -23,6 +25,23 @@ import java.util.ArrayList;
 @ComponentScan("fr.*")
 @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
 public class ECommerceApplication {
+    @Bean
+    public CommandLineRunner runner(ProductService productService){
+        return args -> {
+            Product product1 = new Product(1, "Levante","SUV",108500,"levante",10);
+            Product product2 = new Product(2, "Quattroporte","Berline Elegante",87500,"quattroporte",20);
+            Product product3 = new Product(3, "Guibli","Berline Sportive",81500,"ghibli",35);
+            Product product4 = new Product(4, "Grecale","citadine",75500,"grecale",50);
+            Product product5 = new Product(5, "MC20","GT",150000,"mc20",1);
+
+            productService.save(product1);
+            productService.save(product2);
+            productService.save(product3);
+            productService.save(product4);
+            productService.save(product5);
+
+        };
+    }
 //TP2 - lancement via fichier xml
     /*public static void main(String[] args) {
         //SpringApplication.run(ECommerceApplication.class, args);
@@ -93,9 +112,8 @@ public class ECommerceApplication {
     public static void main(String[] args) {
 
         SpringApplication.run(ECommerceApplication.class, args);
+
 /*
-
-
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ECommerceApplication.class);
         // Récupération des beans services
         ProductService productService = context.getBean("products", ProductService.class);
@@ -123,9 +141,6 @@ public class ECommerceApplication {
             e.printStackTrace();
         }
 */
-
-
-
 
     }
 }

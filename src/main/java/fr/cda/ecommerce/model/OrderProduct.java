@@ -38,7 +38,7 @@ public class OrderProduct {
         return "OrderProduct [product=" + product + ", quantity=" + quantity + "]";
     }
 
-    public Double getTotalPrice() {
+    public Integer getTotalPrice() {
         return getProduct().getPrice() * getQuantity();
     }
 

@@ -50,13 +50,18 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Product getProductById(Long id){
-        for (Product product : allProducts){
-            if(product.getId().equals(id)){
-                return product;
-            }else{
-                throw new ResourceNotFoundException("pas de correspondance avec cet ID");
+ /*   public Product getProductById(int id) {
+        return allProducts.stream().filter(p -> p.getId()== id).findFirst()
+                .orElseThrow(() -> new ResourceNotFoundException("pas de correspondance avec cet ID"));
+    }*/
+
+    public Product getProductById(int id){
+        int i = 0;
+        while (i < allProducts.size()){
+            if(allProducts.get(i).getId() == id){
+                return allProducts.get(i);
             }
+            i++;
         }
         return null;
     }

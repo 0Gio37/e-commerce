@@ -1,0 +1,28 @@
+.bg-image{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.navbar{
+    height: 200px;
+}
+
+.header{
+    height: 250px;
+}
+
+.img-card{
+    height: 150px;
+}
+
+.card {
+    transition: all 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: 5px 6px 6px 2px #e9ecef;
+    transform: scale(1.1)
+}
+.section-actu{
+    height:100vh;
+}
