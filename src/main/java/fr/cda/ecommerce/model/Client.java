@@ -1,5 +1,8 @@
 package fr.cda.ecommerce.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,6 +19,7 @@ public class Client {
         super();
     }
 
+
     public Client(Long id, String username, String password) {
         super();
         this.id = id;
@@ -30,7 +34,8 @@ public class Client {
     public String getUsername() {
         return username;
     }
-
+@JsonIgnore
+@JsonProperty(value = "password")
     public String getPassword() {
         return password;
     }

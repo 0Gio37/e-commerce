@@ -26,7 +26,6 @@ public class ProductServiceImpl implements ProductService {
             return null;
         } else {
             return productRepository.save(product);
-            //return product;
         }
     }
 
@@ -73,12 +72,6 @@ public class ProductServiceImpl implements ProductService {
             return productRepository.getById(id);
         }else{
             throw new ResourceNotFoundException("Pas de correspondance d'ID");
-
         }
-
     }
-
-
-
-
 }

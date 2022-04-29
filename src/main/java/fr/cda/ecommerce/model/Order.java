@@ -1,15 +1,29 @@
 package fr.cda.ecommerce.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
+
+@Entity
+@Table(name = "table_order")
 public class Order {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private LocalDate dateCreated;
     private String status;
+
+    @ManyToOne
+    @JoinColumn(name="fk_client_id")
     private Client client;
+
+    @OneToMany
+    @JoinColumn(name="fk_order_id")
     private List<OrderProduct> orderProducts;
+
+
 
     public Order() {
         super();

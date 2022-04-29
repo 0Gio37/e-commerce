@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
     <jsp:include page="components/header.jsp">
@@ -17,9 +18,27 @@
         </section>
         <section class="section-actu">
             <div class="container">
-                <h2 class="jumbotron-heading m-4">Nos dernière actualités</h2>
+                <h2 class="jumbotron-heading m-4">NOS API</h2>
                 <div>
-                    blah ....
+                    <h3 class="jumbotron-heading m-4">Produits</h3>
+                        <p class="mx-2 px-4">
+                            <a href="api/products" class="btn btn-warning my-2">Afficher</a>
+                        </p>
+                    <div>
+                        <h3 class="jumbotron-heading m-4">Clients</h3>
+                        <p class="mx-2 px-4">
+                            <a href="api/clients" class="btn btn-warning my-2">Afficher</a>
+                        </p>
+                </div>
+                    <div>
+                        <h3 class="jumbotron-heading m-4">Voir un client</h3>
+                        <div class="px-4">
+                            <c:forEach items="${listeClient}" var="client">
+                                <a href="api/client?username=${client.username}" class="btn btn-warning my-2">${client.username}</a>
+                            </c:forEach>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 

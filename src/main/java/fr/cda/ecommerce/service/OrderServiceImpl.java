@@ -4,6 +4,7 @@ import fr.cda.ecommerce.exeption.StockException;
 import fr.cda.ecommerce.model.Order;
 import fr.cda.ecommerce.model.OrderProduct;
 import fr.cda.ecommerce.model.Product;
+import fr.cda.ecommerce.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +13,14 @@ import java.util.List;
 
 @Service("orders")
 public class OrderServiceImpl implements OrderService {
-    private final List<Order> allOrder = new ArrayList<>();
+
+    //private final List<Order> allOrder = new ArrayList<>();
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private OrderRepository orderRepository;
 
     public OrderServiceImpl(){
         super();
@@ -23,14 +28,15 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Order> getAllOrders(){
-        return allOrder;
+        return orderRepository.findAll();
     }
+
 
     @Override
     public Order create(Order order){
-        if(allOrder.contains(order)){
+        if(orderRepository.findAll().contains(order)){
             order.setStatus("En cours");
-            allOrder.add(order);
+            orderRepository.save(order);
             return order;
         }else {
             return null;
@@ -46,6 +52,7 @@ public class OrderServiceImpl implements OrderService {
                 }
             }
             order.setStatus("Payée");
+            orderRepository.save(order);
             for (OrderProduct orderProduct : order.getOrderProducts()) {
                 productService.removeProduct(orderProduct.getProduct(), orderProduct.getQuantity());
             }

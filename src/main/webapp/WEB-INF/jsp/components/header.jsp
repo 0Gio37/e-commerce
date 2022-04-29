@@ -14,5 +14,7 @@
 
 <body>
 <header class="header">
+    <a href="../">
     <div class="bg-image h-100 w-100" style="background-image: url('../../../resources/images/bg-image.png')"></div>
+    </a>
 </header>
