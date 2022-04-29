@@ -11,7 +11,7 @@
                 <h1 class="jumbotron-heading">VOTRE CONCESSIONNAIRE EN LIGNE</h1>
                 <p class="lead text-muted">Site de vente de véhicules neufs</p>
                 <p>
-                    <a href="products" target="_blank" class="btn btn-primary my-2">Voir le catalogue</a>
+                    <a href="products" class="btn btn-primary my-2">Voir le catalogue</a>
                 </p>
             </div>
         </section>

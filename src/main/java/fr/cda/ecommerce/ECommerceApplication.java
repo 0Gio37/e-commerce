@@ -23,23 +23,41 @@ import java.util.ArrayList;
 
 
 @ComponentScan("fr.*")
-@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
+@SpringBootApplication
 public class ECommerceApplication {
     @Bean
     public CommandLineRunner runner(ProductService productService){
         return args -> {
-            Product product1 = new Product(1, "Levante","SUV",108500,"levante",10);
-            Product product2 = new Product(2, "Quattroporte","Berline Elegante",87500,"quattroporte",20);
-            Product product3 = new Product(3, "Guibli","Berline Sportive",81500,"ghibli",35);
-            Product product4 = new Product(4, "Grecale","citadine",75500,"grecale",50);
-            Product product5 = new Product(5, "MC20","GT",150000,"mc20",1);
+            Product product1 = new Product(1, "Levante","SUV",108500,"levante",10, "2020");
+            Product product2 = new Product(2, "Quattroporte","Berline Elegante",87500,"quattroporte",20, "2020");
+            Product product3 = new Product(3, "Guibli","Berline Sportive",81500,"ghibli",35, "2022");
+            Product product4 = new Product(4, "Grecale","citadine",75500,"grecale",50, "2020");
+            Product product5 = new Product(5, "MC20","GT",150000,"mc20",1,"2022");
+            Product product6 = new Product(6, "3200GT","GT",880000,"3200",4,"1998");
+            Product product7 = new Product(7, "Coupé","coupé",150000,"coupe",12,"2002");
+            Product product8 = new Product(8, "bora","concept Car",65000,"bora",9,"1971");
+            Product product9 = new Product(9, "spyder","cabriolet",60000,"spyder",19,"2001");
+            Product product10 = new Product(10, "alfieri","prototype",200000,"alfieri",1,"2023");
 
-            productService.save(product1);
-            productService.save(product2);
+            Product p2 = productService.save(product5);
+           /* Product p2 = productService.save(product6);
+            Product p3 = productService.save(product7);
+            Product p4 = productService.save(product8);
+            Product p5 = productService.save(product9);
+            Product p6 = productService.save(product10);*/
+
+
+
+
+            /*productService.save(product2);
             productService.save(product3);
             productService.save(product4);
             productService.save(product5);
-
+            productService.save(product6);
+            productService.save(product7);
+            productService.save(product8);
+            productService.save(product9);
+            productService.save(product10);*/
         };
     }
 //TP2 - lancement via fichier xml

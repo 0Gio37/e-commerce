@@ -24,6 +24,7 @@
                     <img class="card-img-top img-card" alt="Card image cap" src='<c:url value="../../resources/images/modelProducts/${currentCar.picture}.png/"></c:url>' />
                     <div class="card-body">
                         <p class="card-text">CATEGORIE : ${currentCar.description}</p>
+                        <p class="card-text">MILLESIME : ${currentCar.millesime} €</p>
                         <p class="card-text">PRIX : ${currentCar.price} €</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">

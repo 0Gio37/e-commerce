@@ -32,13 +32,14 @@
                             <div class="card-body">
                                 <p class="card-text">MODELE : ${product.name}</p>
                                 <p class="card-text">CATEGORIE : ${product.description}</p>
+                                <p class="card-text">MILLESIME : ${product.millesime} €</p>
                                 <p class="card-text">PRIX : ${product.price} €</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <a href="products/${product.id}" target="_blank">
                                             <button type="button"  class="btn btn-sm btn-outline-primary">Voir la fiche</button>
                                         </a>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Acheter</button>
+                                        <button type="button" class="btn btn-sm b![](../../../../../../../../../../../Desktop/bg-image.png)tn-outline-secondary">Acheter</button>
                                     </div>
                                     <c:choose>
                                         <c:when test="${product.quantity > 1}">

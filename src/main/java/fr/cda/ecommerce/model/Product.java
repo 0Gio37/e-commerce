@@ -1,19 +1,27 @@
 package fr.cda.ecommerce.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "product")
 public class Product {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private String name;
     private String description;
     private Integer price;
     private String picture;
     private Integer quantity;
+    private String millesime;
 
     public Product() {
         super();
     }
 
-    public Product(int id, String name, String description, Integer price, String picture, Integer quantity) {
+
+    public Product(long id, String name, String description, Integer price, String picture, Integer quantity, String millesime) {
         super();
         this.id = id;
         this.name = name;
@@ -21,9 +29,11 @@ public class Product {
         this.price = price;
         this.picture = picture;
         this.quantity = quantity;
+        this.millesime = millesime;
     }
 
-    public int getId() {
+
+    public long getId() {
         return id;
     }
 
@@ -48,6 +58,10 @@ public class Product {
     }
     public void setQuanity(Integer quantity){
         this.quantity = quantity;
+    }
+
+    public String getMillesime(){
+        return millesime;
     }
 
 
