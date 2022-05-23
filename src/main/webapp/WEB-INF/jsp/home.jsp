@@ -29,7 +29,13 @@
                         <p class="mx-2 px-4">
                             <a href="api/clients" class="btn btn-warning my-2">Afficher</a>
                         </p>
-                </div>
+                    </div>
+                    <div>
+                        <h3 class="jumbotron-heading m-4">Commandes</h3>
+                        <p class="mx-2 px-4">
+                            <a href="api/order" class="btn btn-warning my-2">Afficher</a>
+                        </p>
+                    </div>
                     <div>
                         <h3 class="jumbotron-heading m-4">Voir un client</h3>
                         <div class="px-4">
@@ -37,7 +43,6 @@
                                 <a href="api/client?username=${client.username}" class="btn btn-warning my-2">${client.username}</a>
                             </c:forEach>
                         </div>
-
                     </div>
                 </div>
             </div>
