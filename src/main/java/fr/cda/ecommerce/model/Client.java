@@ -2,30 +2,47 @@ package fr.cda.ecommerce.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.List;
+import fr.cda.ecommerce.model.Role;
 
 @Entity
 @Table(name = "client")
-public class Client {
+public class Client implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String username;
     private String password;
+    @ManyToMany (fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "table_client_role",
+            joinColumns = @JoinColumn(name = "fk_client_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "fk_role_id", referencedColumnName = "id")
+    )
+    private List<Role> role;
 
     public Client() {
         super();
     }
 
 
-    public Client(Long id, String username, String password) {
+    public Client(Long id, String username, String password, List<Role> role) {
         super();
         this.id = id;
         this.username = username;
         this.password = password;
+        this.role = role;
+
     }
+
+
+
 
     public Long getId() {
         return id;
@@ -34,8 +51,17 @@ public class Client {
     public String getUsername() {
         return username;
     }
-@JsonIgnore
-@JsonProperty(value = "password")
+    public void setPassword(String newPass){
+        this.password = newPass;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @JsonIgnore
+    @JsonProperty(value = "password")
     public String getPassword() {
         return password;
     }
@@ -44,6 +70,27 @@ public class Client {
     public String toString() {
         return "Client [id=" + id + ", username=" + username + ", password=" + password + "]";
     }
+
+    @Override
+    public boolean isAccountNonExpired(){
+        return true;
+    }
+    @Override
+    public boolean isAccountNonLocked(){
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired(){
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled(){
+        return true;
+    }
+
+
 
 }
 

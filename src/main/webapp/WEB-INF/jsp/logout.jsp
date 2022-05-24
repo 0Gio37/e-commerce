@@ -1,5 +1,5 @@
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 
 <!doctype html>
 <html lang="FR-fr">
@@ -14,30 +14,17 @@
     <link href="../../resources/css/style.css" rel="stylesheet" type="text/css">
 </head>
 
-<body>
 <header class="header">
-
     <a href="../">
-    <div class="bg-image h-100 w-100" style="background-image: url('../../../resources/images/bg-image.png')"></div>
+        <div class="bg-image h-100 w-100" style="background-image: url('../../resources/images/bg-image.png')"></div>
     </a>
+</header>
 
-    <div class="d-flex justify-content-around">
-        <security:authorize access="isAuthenticated()">
-            <div>
-                Bonjour <security:authentication property="principal.username" />
-            </div>
-            <div>
-                <a href="/logout"><span class="btn btn-danger my-2">Deconnexion</span></a>
-            </div>
-        </security:authorize>
-    </div>
-
-    <div class="d-flex justify-content-end">
+<form:form name='f' action="perform_logout" method='POST'>
+    <div class="d-flex justify-content-center">
         <div>
-            <security:authorize access="isAnonymous()">
-                <a href="/login"><span class="btn btn-success my-2">Se connecter</span></a>
-            </security:authorize>
+            Tapez ok pour se deconnecter
+            <input class="btn btn-primary my-2" name="submit" type="submit" value="OK" />
         </div>
     </div>
-
-</header>
+</form:form>

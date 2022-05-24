@@ -1,8 +1,10 @@
 package fr.cda.ecommerce.controller;
 
+import fr.cda.ecommerce.security.MyClientPrincipal;
 import fr.cda.ecommerce.service.ClientService;
 import fr.cda.ecommerce.service.ClientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +23,16 @@ public class HomeController {
         model.addAttribute("listeClient", clientService.getAllClient());
     return "home";
 
+    }
+    @GetMapping("/login")
+    public String login (Model model){
+        return "login";
 
     }
+
+    @GetMapping("/logout")
+    public String logout (Model model){
+        return "logout";
+    }
+
 }
