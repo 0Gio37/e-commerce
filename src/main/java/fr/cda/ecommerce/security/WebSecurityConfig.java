@@ -14,7 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
-    private final static String[] PUBLIC_ROUTE = {"/", "/products","/products/**"};
+    private final static String[] PUBLIC_ROUTE = {"/", "/products","/products/**", "/register", "/submit_register"};
 
 
     @Autowired
@@ -37,7 +37,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         http.authorizeRequests()
                 .antMatchers(PUBLIC_ROUTE).permitAll()
                 .antMatchers("/api/**").hasRole("ADMIN")
-                //.antMatchers("jp")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

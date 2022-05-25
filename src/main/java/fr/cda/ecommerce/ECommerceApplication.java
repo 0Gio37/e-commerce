@@ -100,6 +100,8 @@ public class ECommerceApplication {
     //Tp3 - lancement via annotations
     public static void main(String[] args) {
         SpringApplication.run(ECommerceApplication.class, args);
+
+
 /*
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ECommerceApplication.class);
         // Récupération des beans services
@@ -134,10 +136,18 @@ public class ECommerceApplication {
     public CommandLineRunner runner(ProductService productService, ClientService clientService){
         return args -> {
 
+
+
+
 /*            for (Client client : clientService.getAllClient()
                  ) { client.setPassword(passwordEncoder().encode(client.getPassword()));
                 clientService.save(client);
             }*/
+
+     /*       Client test = new Client("tata", "pass");
+            clientService.save(test);
+
+*/
 
 
 

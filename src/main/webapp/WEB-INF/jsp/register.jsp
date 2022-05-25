@@ -23,23 +23,27 @@
 
 </header>
 
-
 <div class="container">
-    <form:form name='f' action="perform_login" method='POST'>
-        <h2 class="form-signin-heading">Page de login</h2>
-        <p>
-            <label for="username" class="sr-only">Username</label>
-            <input type="text" id="username" name="username" class="form-control" required autofocus>
-        </p>
-        <p>
-            <label for="password" class="sr-only">Password</label>
-            <input type="password" id="password" name="password" class="form-control" required>
-        </p>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrer</button>
-    </form:form>
 
-    <div>
-        <a href="/register">Créer un nouveau compte</a>
-    </div>
+    <form:form method="POST" action="/submit_register" modelAttribute="newClient">
+        <table>
+            <tr>
+                <td autofocus><form:label path="username">Name</form:label></td>
+                <td><form:input path="username" /></td>
+            </tr>
+            <tr>
+                <td><form:label path="password">Password</form:label></td>
+                <td><form:password path="password" /></td>
+            </tr>
+            <tr>
+                <td><form:label path="confirmPassword">Confirm Password</form:label></td>
+                <td><form:password path="confirmPassword" /></td>
+            </tr>
+
+            <tr>
+                <td><input type="submit" value="Submit" /></td>
+            </tr>
+        </table>
+    </form:form>
 
 </div>

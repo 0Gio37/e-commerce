@@ -14,7 +14,7 @@ import java.util.List;
 public class Client implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
     private String password;
@@ -39,8 +39,16 @@ public class Client implements UserDetails {
         this.password = password;
     }
 
+    public Client(String username, String password) {
+        super();
+        this.username = username;
+        this.password = password;
+    }
 
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public Long getId() {
         return id;
@@ -55,6 +63,10 @@ public class Client implements UserDetails {
 
     public List<Role> getRole(){
         return role;
+    }
+
+    public void setRole(List<Role> role) {
+        this.role = role;
     }
 
     @Override
