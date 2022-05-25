@@ -1,10 +1,15 @@
 package fr.cda.ecommerce.security;
 
 import fr.cda.ecommerce.model.Client;
+import fr.cda.ecommerce.model.Role;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 public class MyClientPrincipal implements UserDetails {
 
@@ -25,7 +30,13 @@ public class MyClientPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        List<Role> roles = client.getRole();
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+
+        for(Role role : roles){
+            authorities.add(new SimpleGrantedAuthority(role.getNom()));
+        }
+        return authorities;
     }
 
     @Override

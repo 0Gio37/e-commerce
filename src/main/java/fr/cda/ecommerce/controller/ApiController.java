@@ -55,10 +55,7 @@ public class ApiController {
         return clientPrincipal;
     }
 
-    @GetMapping("/test")
-    public Principal test (Principal princ){
-        return princ;
-    }
+
 
 
 

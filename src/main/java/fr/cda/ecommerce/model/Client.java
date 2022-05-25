@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
-import fr.cda.ecommerce.model.Role;
 
 @Entity
 @Table(name = "client")
@@ -19,6 +18,7 @@ public class Client implements UserDetails {
     private Long id;
     private String username;
     private String password;
+
     @ManyToMany (fetch = FetchType.EAGER)
     @JoinTable(
             name = "table_client_role",
@@ -32,13 +32,11 @@ public class Client implements UserDetails {
     }
 
 
-    public Client(Long id, String username, String password, List<Role> role) {
+    public Client(Long id, String username, String password) {
         super();
         this.id = id;
         this.username = username;
         this.password = password;
-        this.role = role;
-
     }
 
 
@@ -53,6 +51,10 @@ public class Client implements UserDetails {
     }
     public void setPassword(String newPass){
         this.password = newPass;
+    }
+
+    public List<Role> getRole(){
+        return role;
     }
 
     @Override

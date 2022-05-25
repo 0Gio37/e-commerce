@@ -4,6 +4,7 @@ import fr.cda.ecommerce.security.MyClientPrincipal;
 import fr.cda.ecommerce.service.ClientService;
 import fr.cda.ecommerce.service.ClientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,5 +35,11 @@ public class HomeController {
     public String logout (Model model){
         return "logout";
     }
+
+    @GetMapping("jp")
+    public String jp (Model model){
+        return "jp";
+    }
+
 
 }

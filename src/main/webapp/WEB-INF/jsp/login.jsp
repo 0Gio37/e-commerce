@@ -23,12 +23,11 @@
 
 </header>
 
-
-
+<%--
 <form:form name='f' action="perform_login" method='POST'>
     <table>
         <tr>
-            <td>Username:</td><td><input type='text' name='username' value='' required></td>
+            <td>Username:</td><td><input type='text' name='username' value='' required autofocus></td>
         </tr>
         <tr>
             <td>Password:</td><td><input type='password' name='password' required /></td>
@@ -37,4 +36,21 @@
             <td><input name="submit" type="submit" value="submit" /></td>
         </tr>
     </table>
-</form:form>
+</form:form>--%>
+
+
+
+<div class="container">
+    <form:form name='f' action="perform_login" method='POST'>
+        <h2 class="form-signin-heading">Page de login</h2>
+        <p>
+            <label for="username" class="sr-only">Username</label>
+            <input type="text" id="username" name="username" class="form-control" required autofocus>
+        </p>
+        <p>
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" id="password" name="password" class="form-control" required>
+        </p>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrer</button>
+    </form:form>
+</div>

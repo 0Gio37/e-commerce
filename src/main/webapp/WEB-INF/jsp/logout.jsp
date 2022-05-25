@@ -23,8 +23,7 @@
 <form:form name='f' action="perform_logout" method='POST'>
     <div class="d-flex justify-content-center">
         <div>
-            Tapez ok pour se deconnecter
-            <input class="btn btn-primary my-2" name="submit" type="submit" value="OK" />
+            <input class="btn btn-primary my-2" name="submit" type="submit" value="DECONNEXION" />
         </div>
     </div>
 </form:form>
