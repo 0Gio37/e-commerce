@@ -76,15 +76,23 @@ public class ClientServiceImpl implements ClientService, UserDetailsService {
 
     @Override
     public void newClientRegister(ClientDTO clientDto){
-        clientDto.setPassword(passwordEncoder.encode(clientDto.getPassword()));
-        Client currentClient = clientDto.dtoToClient();
-        List<Role> roles = new ArrayList<Role>();
-        roles.add(new Role(1l, "ROLE_CLIENT"));
-        currentClient.setRole(roles);
+        if(validFormPassword(clientDto.getPassword())){
+            clientDto.setPassword(passwordEncoder.encode(clientDto.getPassword()));
+            Client currentClient = clientDto.dtoToClient();
+            List<Role> roles = new ArrayList<Role>();
+            roles.add(new Role(1l, "ROLE_CLIENT"));
+            currentClient.setRole(roles);
 
-        if(comparatePassword(clientDto.getPassword(), clientDto.getConfirmPassword())){
-            clientRepository.save(currentClient);
+            if(comparatePassword(clientDto.getPassword(), clientDto.getConfirmPassword())){
+                clientRepository.save(currentClient);
+                System.out.println("nouveau client créé");
+            }else{
+                System.out.println("password not valid ou not confirmed");
+            }
+        }else{
+            System.out.println("password format not valid");
         }
+
     }
 
     @Override
@@ -94,32 +102,31 @@ public class ClientServiceImpl implements ClientService, UserDetailsService {
 
     @Override
     public boolean validFormPassword(String pass) {
-        boolean status = true;
+        boolean status = false;
+        System.out.println("pass = "+pass);
         String[] listSpeCaract = {"*", "-", "_", "(", ")", "&", "!", "+", ".", "/", ",", ";", ":", "'", "<", ">", "@", "°", "%", "€", "£"};
         List<String> list = Arrays.asList(listSpeCaract);
 
-        if (!Character.isUpperCase(pass.charAt(0))) {
-            status = false;
+        if (Character.isUpperCase(pass.charAt(0))) {
+            status = true;
+            System.out.println("pas de maj sur le 1er char");
         }
         if (pass.length() < 6) {
             status = false;
+            System.out.println("pass inf a 6 char");
         }
         for (int i = 0; i < pass.length(); i++) {
             if (Character.isDigit(pass.charAt(i))) {
-                status = false;
+                status = true;
+                System.out.println("password pas de digit");
             }
-            for (int j = 0; j < pass.length(); j++) {
-                if (list.contains(pass.charAt(j))) {
-                    status = false;
-                }
-
-
-            }
-
-
-            return status;
         }
+        for (int j = 0; j < pass.length(); j++) {
+            if(list.contains(pass.charAt(j))) {
+                status = true;
+                System.out.println("password pas de char spe");
+            }
+        }
+        return status;
     }
-
-
 }
